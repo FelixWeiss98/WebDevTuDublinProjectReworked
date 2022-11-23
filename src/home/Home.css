@@ -1,0 +1,11 @@
+.wrapperHome {
+    min-height: 200px;
+    min-width: 100%;
+    background: lightgray;
+    font-family: Calibri;
+}
+
+.home {
+    min-height: 200px;
+    margin: 5%;
+}

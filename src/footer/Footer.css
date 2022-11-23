@@ -1,0 +1,18 @@
+.wrapperFooter {
+    min-height: 50px;
+    min-width: 100%;
+    background: lightgray;
+    background: linear-gradient(0deg, lightgray 0%, gray 100%);
+    font-family: Calibri;
+}
+
+.footer {
+    min-height: 50px;
+    min-width: 90%;
+    margin: 5%;
+    justify-content: center;
+}
+
+.copyright {
+    text-align: center;
+}
