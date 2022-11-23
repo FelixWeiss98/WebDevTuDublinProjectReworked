@@ -8,6 +8,7 @@
 /server/.env
 /server/files/restaurantImg/
 /server/files/profileImg/
+
 # testing
 /coverage
 
