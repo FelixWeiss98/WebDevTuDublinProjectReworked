@@ -8,7 +8,7 @@ const parser = require('../utils/requestParser');
 router.get('/', async (req, res) =>{
     try {
         await restaurantData.find()
-        .then(data => res.json(data));
+        .then(data => res.send(data));
     } catch (error) {
         console.log(error);
         res.status(500).send({

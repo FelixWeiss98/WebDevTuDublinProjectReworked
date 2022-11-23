@@ -1,8 +1,19 @@
 import "./Home.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Restaurant from "../restaurant/Restaurant";
+import axios from "axios";
 
 const Home = () => {
+
+    useEffect(() => {
+        const getData = async () => {
+            const results = await axios.get('http://localhost:3003/home');
+            console.log(results);
+            setRestaurants(results.data);
+        }
+        getData();
+    }, []);
+
     const [restaurants, setRestaurants] = useState([
         { name:'Restaurant 1', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium est, sed eleifend lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium est, sed eleifend lorem.', bestOfMonth: false, id: 1 },
         { name:'Restaurant 2', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium est, sed eleifend lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pretium est, sed eleifend lorem.', bestOfMonth: true, id: 2 },
