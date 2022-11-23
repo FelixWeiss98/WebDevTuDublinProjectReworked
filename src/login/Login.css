@@ -1,6 +1,30 @@
 .wrapperLogin {
-    min-height: 200px;
+    min-height: 500px;
     min-width: 100%;
-    background: red;
+    background: lightgrey;
     font-family: Calibri;
+}
+
+.login {
+    min-height: 200px;
+    margin: 5%;
+    background-color: #4b4b4b;
+    border-radius: 10px;
+}
+
+.loginbutton {
+    margin: 5%;
+}
+
+label {
+    color: aliceblue;
+    align-self: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+input {
+    color: #4b4b4b;
+    margin-left: 5%;
+    margin-right: 5%;
 }

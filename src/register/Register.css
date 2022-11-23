@@ -1,6 +1,13 @@
 .wrapperRegister {
-    min-height: 200px;
+    min-height: 500px;
     min-width: 100%;
-    background: blue;
+    background: lightgrey;
     font-family: Calibri;
+}
+
+.register {
+    min-height: 200px;
+    margin: 5%;
+    background-color: #4b4b4b;
+    border-radius: 10px;
 }

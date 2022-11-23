@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+/server/node_modules
+/server/.env
+/server/files/restaurantIMG/
+/server/files/profileIMG
 
 # testing
 /coverage
