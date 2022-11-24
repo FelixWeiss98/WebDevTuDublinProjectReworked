@@ -11,6 +11,7 @@ const Home = () => {
             const results = await axios.get('http://localhost:3003/home');
             console.log(results);
             setRestaurants(results.data);
+            setFiltered(results.data);
         }
         getData();
     }, []);
