@@ -87,14 +87,13 @@ router.post('/login', async (req, res) => {
                 );
                 return res.status(200).json({ uname, token, message: "Login successful" });
             } else {
-                console.log("Invalid password");
                 return res.status(401).send({
-                    'message': 'Invalid username or password'
+                    'message': 'Invalid username and password'
                 });
             }
         } catch (error) {
             return res.status(401).send({
-                'message': 'Invalid username or password'
+                'message': 'Invalid username and password'
             });
         }
     } else {

@@ -11,18 +11,15 @@ const Register = () => {
 
     const handleUserName = (event) => {
         setUsername(event.target.value);
-        console.log(userName);
     }
 
     const handleEmailAddress = (event) => {
         setEmailAddress(event.target.value);
-        console.log(emailAddress);
     }
 
     
     const handleChange = event => {
         setPassword(event.target.value);
-        console.log(password);
     }
     
     const handleChange2 = event => {
@@ -30,15 +27,25 @@ const Register = () => {
         
     }
     
-    const handleClick = event => {
+    const handleClick = () => {
         if (password === password2) {
             const registerRequest = async () => {
-                const results = await axios.post('http://localhost:3003/user/register', {
-                    userName: userName,
-                    emailAddress: emailAddress,
-                    password: password
-                })
-                console.log(results);
+                try {
+                    const results = await axios.post('http://localhost:3003/user/register', {
+                        userName: userName,
+                        emailAddress: emailAddress,
+                        password: password
+                    })
+                    setUsername('');
+                    setEmailAddress('');
+                    setPassword('');
+                    setPassword2('');
+                    console.log(results.data);
+                    alert("Success!")
+                } catch (error) {
+                    alert(error.response.data.message)
+                }
+
             }
             registerRequest();
         } else {
@@ -60,11 +67,11 @@ const Register = () => {
                 <label>
                     <b>Create Password</b>
                 </label>
-                <input type="text" value={ password } onChange={ handleChange } placeholder="Enter New Password" name="password" required></input>
+                <input type="password" value={ password } onChange={ handleChange } placeholder="Enter New Password" name="password" required></input>
                 <label>
                     <b>Repeat Password</b>
                 </label>
-                <input type="text" value={ password2 } onChange={ handleChange2 } placeholder="Repeat Your New Password" name="password2" required></input>
+                <input type="password" value={ password2 } onChange={ handleChange2 } placeholder="Repeat Your New Password" name="password2" required></input>
                 <button onClick={ handleClick } className="loginbutton" type="submit">Sign Up</button>
             </div>
         </div> 

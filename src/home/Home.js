@@ -40,7 +40,7 @@ const Home = () => {
     return (  
         <div className="wrapperHome flex">
             <div className="home">
-                {/*<Header filter={filteredData}/>*/}
+                <Header filter={filteredData}/>
                 <Restaurant restaurantList={filtered} title="Find your Restaurant"/>
                 <Restaurant restaurantList={restaurants.filter((restaurant) => restaurant.bestOfMonth === true)} title="Our monthly Recommentations"/>
             </div>
