@@ -1,9 +1,11 @@
 import "./Login.css";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
+    let navigate = useNavigate();
     const [loginData, setLoginData] = useState({
         userName: "",
         password: ""
@@ -21,7 +23,10 @@ const Login = () => {
                     password: ""
                 });
                 console.log(results.data);
-                alert("Login successful")
+                setTimeout(() => {
+                    localStorage.setItem('userData', JSON.stringify(results.data));
+                    navigate('/', {replace: true});
+                }, 1700);
             } catch (error) {
                 setLoginData({
                     userName: "",
