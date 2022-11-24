@@ -1,26 +1,50 @@
 import { useState } from "react";
 import "./Register.css"
+import axios from "axios";
 
 const Register = () => {
+
+    const [userName, setUsername] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-    let isPasswordValid;
 
-    const handleClick = event => {
-        if (password === password2){
-            isPasswordValid = true;
-        }
+    const handleUserName = (event) => {
+        setUsername(event.target.value);
+        console.log(userName);
     }
 
+    const handleEmailAddress = (event) => {
+        setEmailAddress(event.target.value);
+        console.log(emailAddress);
+    }
+
+    
     const handleChange = event => {
         setPassword(event.target.value);
+        console.log(password);
     }
-
+    
     const handleChange2 = event => {
         setPassword2(event.target.value);
         
     }
     
+    const handleClick = event => {
+        if (password === password2) {
+            const registerRequest = async () => {
+                const results = await axios.post('http://localhost:3003/user/register', {
+                    userName: userName,
+                    emailAddress: emailAddress,
+                    password: password
+                })
+                console.log(results);
+            }
+            registerRequest();
+        } else {
+            alert("Passwords does not match");
+        }
+    }
 
     return ( 
         <div className="wrapperRegister flex">
@@ -28,11 +52,11 @@ const Register = () => {
                 <label>
                     <b>Type in Email</b>
                 </label>
-                <input type="text" placeholder="Enter Email Address" name="email" required></input>
+                <input type="text" value={ emailAddress } onChange={ handleEmailAddress } placeholder="Enter Email Address" name="email" required></input>
                 <label>
                     <b>Create Username</b>
                 </label>
-                <input type="text" placeholder="Enter New Username" name="username" required></input>
+                <input type="text" value={ userName } onChange={ handleUserName } placeholder="Enter New Username" name="username" required></input>
                 <label>
                     <b>Create Password</b>
                 </label>

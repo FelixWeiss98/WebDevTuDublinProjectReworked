@@ -14,7 +14,7 @@ router.get('/', auth, (req, res) => {
     res.sendStatus(200);
 });
 router.post('/register', async (req, res) => {
-
+    console.log(req.body);
     // Check for valid inputs
     if(parser.parseString(req.body.userName, 20) &&
        parser.parseEmail(req.body.emailAddress, 50) &&
