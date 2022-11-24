@@ -41,7 +41,7 @@
     justify-content: center;
 }
 
-.navbar a{
+.navbar a, button{
     background-color: #4b4b4b;
     color: aliceblue;
     border-radius: 6px;
@@ -50,7 +50,7 @@
     text-decoration: none;
 }
 
-.navbar a:hover{
+.navbar a:hover, button:hover{
     color: goldenrod;
 }
 
