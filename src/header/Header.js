@@ -1,6 +1,6 @@
 import "./Header.css";
 
-const Header = () => {
+const Header = ( { filter } ) => {
     const title = 'Gerhard and Felix Restaurants';
     return(
         <div className="wrapperHeader flex">
@@ -17,7 +17,9 @@ const Header = () => {
                     <a href="/login">Login</a>
                     <a href="/register">Register</a>
                 </nav>
-                <div className="searchbar flex"></div>
+                <div className="searchbar flex">
+                <input type="text" placeholder="Type here to search" onChange={ e => filter(e.target.value)}></input>
+                </div>
             </div>
         </div>
     );

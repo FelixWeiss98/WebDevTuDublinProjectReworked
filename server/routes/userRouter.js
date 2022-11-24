@@ -14,7 +14,7 @@ router.get('/', auth, (req, res) => {
     res.sendStatus(200);
 });
 router.post('/register', async (req, res) => {
-
+    console.log(req.body);
     // Check for valid inputs
     if(parser.parseString(req.body.userName, 20) &&
        parser.parseEmail(req.body.emailAddress, 50) &&
@@ -87,14 +87,13 @@ router.post('/login', async (req, res) => {
                 );
                 return res.status(200).json({ uname, token, message: "Login successful" });
             } else {
-                console.log("Invalid password");
                 return res.status(401).send({
-                    'message': 'Invalid username or password'
+                    'message': 'Invalid username and password'
                 });
             }
         } catch (error) {
             return res.status(401).send({
-                'message': 'Invalid username or password'
+                'message': 'Invalid username and password'
             });
         }
     } else {
