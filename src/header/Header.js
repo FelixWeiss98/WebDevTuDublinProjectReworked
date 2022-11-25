@@ -7,6 +7,7 @@ const Header = ( ) => {
     const [userNameView, setUserNameView] = useState('');
     const logOut = () => {
         localStorage.removeItem('userData');
+        setUserNameView('');
         setTimeout(() => {
             setLoggedIn(false);
         }, 500)
@@ -44,10 +45,10 @@ const Header = ( ) => {
                     ? <div className="navbar flex">
                         <a href="/login">Login</a>
                         <a href="/register">Register</a>
-                        <a href="/profil">Profil</a>
                     </div>
                     : <div className="navbar flex">
-                        {"Welcome " + `${userNameView}`}
+                        {` Welcome ${userNameView}`}
+                        <a href="/profil">Profil</a>
                         <button onClick={() => logOut()}>Log Out</button>
                     </div>}
                 </nav>

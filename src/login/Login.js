@@ -26,6 +26,7 @@ const Login = () => {
                 setTimeout(() => {
                     localStorage.setItem('userData', JSON.stringify(results.data));
                     navigate('/', {replace: true});
+                    window.location.reload(false);
                 }, 800);
             } catch (error) {
                 setLoginData({

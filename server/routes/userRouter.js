@@ -93,6 +93,7 @@ router.post('/login', async (req, res) => {
             });
         }
     } else {
+        console.log("error");
         return res.status(404).send({
             'message': 'Invalid username or password format'
         });
@@ -100,11 +101,12 @@ router.post('/login', async (req, res) => {
 });
 
 router.delete('/', auth, async (req, res) => {
-    console.log(req.headers.uname);
-    let userName = req.headers.uname;
-    if(parser.parseString(userName, 20)) {
+    console.log(req.headers.userdata);
+    let parsedData = JSON.parse(req.headers.userdata);
+    let uname = parsedData.uname;
+    if(parser.parseString(uname, 20)) {
         try {
-            let results = await db.collection('users').deleteOne({"userName": userName});
+            let results = await db.collection('users').deleteOne({"userName": uname});
             console.log(results);
             return res.status(200).send({
                 'message': 'Account deleted successfully'
@@ -122,6 +124,9 @@ router.delete('/', auth, async (req, res) => {
 });
 
 router.put('/', auth, async (req, res) => {
+    console.log(req.headers.userdata);
+    let parsedData = JSON.parse(req.headers.userdata);
+    let uname = parsedData.uname;
     if(parser.parseEmail(req.body.email, 50) &&
        parser.parseString(req.body.password, 50))
     {
@@ -137,7 +142,7 @@ router.put('/', auth, async (req, res) => {
         }
         try {
             let results = await db.collection('users').updateOne({
-                userName: req.headers.uname
+                userName: uname
             },
             {
                 $set: { emailAddress: req.body.email, password: hashedPassword }
