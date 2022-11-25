@@ -44,6 +44,7 @@ const Header = ( { filter } ) => {
                     ? <div className="navbar flex">
                         <a href="/login">Login</a>
                         <a href="/register">Register</a>
+                        <a href="/profil">Profil</a>
                     </div>
                     : <div className="navbar flex">
                         {"Welcome " + `${userNameView}`}
