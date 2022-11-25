@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-    let token = req.headers.token;
+    console.log(req.headers);
+    let parsedData = JSON.parse(req.headers.userdata);
+    let token = parsedData.token;
     // Check if token exists
     if(!token) {
         return res.status(400).send({
