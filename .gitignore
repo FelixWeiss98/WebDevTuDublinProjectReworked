@@ -6,8 +6,8 @@
 .pnp.js
 /server/node_modules
 /server/.env
-/server/files/restaurantIMG/
-/server/files/profileIMG
+/server/files/restaurantImg/
+/server/files/profileImg/
 
 # testing
 /coverage

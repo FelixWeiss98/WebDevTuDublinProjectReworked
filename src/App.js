@@ -6,11 +6,12 @@ import Login from "./login/Login";
 import Register from "./register/Register";
 import Profil from "./profil/Profil";
 
+
 function App(){
     return(
         <BrowserRouter>
             <div className="App">
-                <Header />
+                {/*<Header />*/}
                     <Routes>
                         <Route path="/" element={ <Home /> } />
                         <Route path="/login" element={ <Login /> } />

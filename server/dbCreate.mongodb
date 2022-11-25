@@ -5,27 +5,24 @@ use('webApp');
 db.restaurants.drop();
 
 db.restaurants.insertOne({
-    restaurantName: "The mesta",
-    rating: 8,
-    address: "Some street 14",
+    name: "The mesta",
     description: "Good place to be",
-    imagePath: "theimagepath.net"
+    bestOfMonth: true,
+    id: 1
 })
 
 
 db.restaurants.insertMany([
     {
-        restaurantName: "Lärvilä",
-        rating: 100,
-        address: "Some street 22",
+        name: "Lärvilä",
         description: "Get wasted",
-        imagePath: "theimagepath.net"
+        bestOfMonth: false,
+        id: 2
     },
     {
-        restaurantName: "Läävä",
-        rating: 4,
-        address: "Some street 44",
+        name: "Läävä",
         description: "Might get food poisoning",
-        imagePath: "theimagepath.net"
+        bestOfMonth: true,
+        id: 3
     }
 ])
