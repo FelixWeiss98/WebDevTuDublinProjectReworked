@@ -8,10 +8,7 @@ const { db } = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/authentication');
 
-router.get('/', auth, async (req, res) => {
-    console.log(req.token)
-    res.sendStatus(200);
-});
+
 router.post('/register', async (req, res) => {
     console.log(req.body);
     // Check for valid inputs
@@ -111,6 +108,43 @@ router.delete('/', auth, async (req, res) => {
             console.log(results);
             return res.status(200).send({
                 'message': 'Account deleted successfully'
+            });
+        } catch (error) {
+            return res.status(500).send({
+                'message': 'There was a server error'
+            });
+        }
+    } else {
+        return res.status(404).send({
+            'message': 'There was an error in input format'
+        });
+    }
+});
+
+router.put('/', auth, async (req, res) => {
+    if(parser.parseEmail(req.body.email, 50) &&
+       parser.parseString(req.body.password, 50))
+    {
+        // Make hashed password
+        let hashedPassword;
+        try {
+            hashedPassword = await argon2.hash(req.body.password);
+        } catch (error) {
+            console.log(error);
+            return res.status(400).send({
+                'message': 'Error with password format'
+            });
+        }
+        try {
+            let results = await db.collection('users').updateOne({
+                userName: req.headers.uname
+            },
+            {
+                $set: { emailAddress: req.body.email, password: hashedPassword }
+            });
+            console.log(results);
+            return res.status(200).send({
+                'message': 'Account updated successfully'
             });
         } catch (error) {
             return res.status(500).send({
