@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 
 const verifyToken = (req, res, next) => {
-    let token = req.headers.tokendata;
-    console.log(req.headers.tokendata);
+    let token = req.headers.token;
+    console.log(req.headers.token);
     // Check if token exists
     if(!token) {
-        return res.status(403).send({
+        return res.status(400).send({
             'message': 'Missing token information'
         });
     }

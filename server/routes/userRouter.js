@@ -10,7 +10,7 @@ const auth = require('../middleware/authentication');
 
 
 router.get('/', auth, (req, res) => {
-    console.log(req.tokendata)
+    console.log(req.token)
     res.sendStatus(200);
 });
 router.post('/register', async (req, res) => {
@@ -101,6 +101,10 @@ router.post('/login', async (req, res) => {
             'message': 'Invalid username or password format'
         });
     }
+});
+
+router.delete('/', auth, (req, res) => {
+    let
 });
 
 module.exports = router;
