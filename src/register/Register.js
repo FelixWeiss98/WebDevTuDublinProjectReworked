@@ -46,7 +46,7 @@ const Register = () => {
                         setPassword2('');
                         console.log(results.data);
                         navigate('/', {replace: true})
-                    }, 800);
+                    }, 300);
                 } catch (error) {
                     alert(error.response.data.message)
                 }

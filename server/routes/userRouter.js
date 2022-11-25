@@ -8,8 +8,7 @@ const { db } = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/authentication');
 
-
-router.get('/', auth, (req, res) => {
+router.get('/', auth, async (req, res) => {
     console.log(req.token)
     res.sendStatus(200);
 });
@@ -103,8 +102,26 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.delete('/', auth, (req, res) => {
-    let
+router.delete('/', auth, async (req, res) => {
+    console.log(req.headers.uname);
+    let userName = req.headers.uname;
+    if(parser.parseString(userName, 20)) {
+        try {
+            let results = await db.collection('users').deleteOne({"userName": userName});
+            console.log(results);
+            return res.status(200).send({
+                'message': 'Account deleted successfully'
+            });
+        } catch (error) {
+            return res.status(500).send({
+                'message': 'There was a server error'
+            });
+        }
+    } else {
+        return res.status(404).send({
+            'message': 'There was an error in input format'
+        });
+    }
 });
 
 module.exports = router;
