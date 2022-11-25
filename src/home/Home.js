@@ -2,9 +2,8 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import Restaurant from "../restaurant/Restaurant";
 import axios from "axios";
-import Header from "../header/Header";
 
-const Home = () => {
+const Home = ( ) => {
 
     useEffect(() => {
         const getData = async () => {
@@ -41,7 +40,9 @@ const Home = () => {
     return (  
         <div className="wrapperHome flex">
             <div className="home">
-                <Header filter={filteredData}/>
+                <div className="searchbar flex">
+                    <input type="text" placeholder="Type here to search" onChange={ e => filteredData(e.target.value)}></input>
+                </div>
                 <Restaurant restaurantList={filtered} title="Find your Restaurant"/>
                 <Restaurant restaurantList={restaurants.filter((restaurant) => restaurant.bestOfMonth === true)} title="Our monthly Recommentations"/>
             </div>

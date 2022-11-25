@@ -1,7 +1,7 @@
 import "./Header.css";
 import { useEffect, useState } from 'react'
 
-const Header = ( { filter } ) => {
+const Header = ( ) => {
     
     const [loggedIn, setLoggedIn] = useState(false);
     const [userNameView, setUserNameView] = useState('');
@@ -51,9 +51,6 @@ const Header = ( { filter } ) => {
                         <button onClick={() => logOut()}>Log Out</button>
                     </div>}
                 </nav>
-                <div className="searchbar flex">
-                <input type="text" placeholder="Type here to search" onChange={ e => filter(e.target.value)}></input>
-                </div>
             </div>
         </div>
     );
