@@ -9,10 +9,6 @@ const jwt = require('jsonwebtoken');
 const auth = require('../middleware/authentication');
 
 
-router.get('/', auth, (req, res) => {
-    console.log(req.tokendata)
-    res.sendStatus(200);
-});
 router.post('/register', async (req, res) => {
     console.log(req.body);
     // Check for valid inputs
@@ -99,6 +95,65 @@ router.post('/login', async (req, res) => {
     } else {
         return res.status(404).send({
             'message': 'Invalid username or password format'
+        });
+    }
+});
+
+router.delete('/', auth, async (req, res) => {
+    console.log(req.headers.uname);
+    let userName = req.headers.uname;
+    if(parser.parseString(userName, 20)) {
+        try {
+            let results = await db.collection('users').deleteOne({"userName": userName});
+            console.log(results);
+            return res.status(200).send({
+                'message': 'Account deleted successfully'
+            });
+        } catch (error) {
+            return res.status(500).send({
+                'message': 'There was a server error'
+            });
+        }
+    } else {
+        return res.status(404).send({
+            'message': 'There was an error in input format'
+        });
+    }
+});
+
+router.put('/', auth, async (req, res) => {
+    if(parser.parseEmail(req.body.email, 50) &&
+       parser.parseString(req.body.password, 50))
+    {
+        // Make hashed password
+        let hashedPassword;
+        try {
+            hashedPassword = await argon2.hash(req.body.password);
+        } catch (error) {
+            console.log(error);
+            return res.status(400).send({
+                'message': 'Error with password format'
+            });
+        }
+        try {
+            let results = await db.collection('users').updateOne({
+                userName: req.headers.uname
+            },
+            {
+                $set: { emailAddress: req.body.email, password: hashedPassword }
+            });
+            console.log(results);
+            return res.status(200).send({
+                'message': 'Account updated successfully'
+            });
+        } catch (error) {
+            return res.status(500).send({
+                'message': 'There was a server error'
+            });
+        }
+    } else {
+        return res.status(404).send({
+            'message': 'There was an error in input format'
         });
     }
 });
