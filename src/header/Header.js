@@ -16,6 +16,7 @@ const Header = () => {
                 <nav className="navbar flex">
                     <a href="/login">Login</a>
                     <a href="/register">Register</a>
+                    <a href="/profil">Profil</a>
                 </nav>
                 <div className="searchbar flex"></div>
             </div>
