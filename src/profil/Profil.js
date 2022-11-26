@@ -32,6 +32,7 @@ const Profil = () => {
                             password: '',
                             validatePassword: ''
                         });
+                        alert(results.data.message);
                     }, 800);
                 } catch (error) {
                     console.log(error.response.data.message); 
@@ -55,6 +56,8 @@ const Profil = () => {
                         password: '',
                         validatePassword: ''
                     });
+                    alert(results.data.message);
+                    localStorage.removeItem('userData');
                 }, 800);
             } catch (error) {
                 console.log(error.response.data.message);
