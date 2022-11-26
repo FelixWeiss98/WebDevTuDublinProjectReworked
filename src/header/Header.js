@@ -14,7 +14,6 @@ const Header = ( ) => {
             setLoggedIn(false);
             window.location.reload();
             navigate('/', {replace: true});
-            
         }, 500)
     };
 

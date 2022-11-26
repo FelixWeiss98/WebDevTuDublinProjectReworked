@@ -15,7 +15,7 @@ function App(){
     if (userAuth) {
         authRoute = <Route path="/profil" element={ <Profil /> } />
     }
-    console.log(userData);
+    
     return(
         <BrowserRouter>
             <div className="App">

@@ -35,7 +35,8 @@ const Profil = () => {
                         alert(results.data.message);
                     }, 800);
                 } catch (error) {
-                    console.log(error.response.data.message); 
+                    console.log(error.response.data.message);
+                    alert(error.response.data.message);
                 }
             } else {
                 alert("Passwords does not match");
