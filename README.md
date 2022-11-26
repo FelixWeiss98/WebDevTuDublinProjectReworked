@@ -35,11 +35,11 @@ Populate database with file:
    ```
 5. Set environment variables in  `server/.env`
    ```js
-DB_USERNAME=user // db login username
-DB_PASSWORD=password // db login password
-PORT=3003 // Server port
-SECRET_TOKEN=shhh // JWT secret hash
-TOKEN_EXPIRE=1h // JWT expiration time
+	DB_USERNAME=user // db login username
+	DB_PASSWORD=password // db login password
+	PORT=3003 // Server port
+	SECRET_TOKEN=shhh // JWT secret hash
+	TOKEN_EXPIRE=1h // JWT expiration time
    ```
 6. Run server in `./server`
    ```sh
