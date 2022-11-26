@@ -1,8 +1,10 @@
 import "./Header.css";
 import { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 
 const Header = ( ) => {
     
+    let navigate = useNavigate
     const [loggedIn, setLoggedIn] = useState(false);
     const [userNameView, setUserNameView] = useState('');
     const logOut = () => {
@@ -10,6 +12,8 @@ const Header = ( ) => {
         setUserNameView('');
         setTimeout(() => {
             setLoggedIn(false);
+            window.location.reload();
+            navigate('/', {replace: true});
         }, 500)
     };
 

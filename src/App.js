@@ -5,9 +5,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from "./login/Login";
 import Register from "./register/Register";
 import Profil from "./profil/Profil";
+import { useState } from "react";
 
+const userData = JSON.parse(localStorage.getItem('userData')) || false;
 
 function App(){
+    let authRoute = <></>
+    let [userAuth, setUserAuth] = useState(userData.token)
+    if (userAuth) {
+        authRoute = <Route path="/profil" element={ <Profil /> } />
+    }
+    
     return(
         <BrowserRouter>
             <div className="App">
@@ -16,7 +24,7 @@ function App(){
                         <Route path="/" element={ <Home /> } />
                         <Route path="/login" element={ <Login /> } />
                         <Route path="/register" element={ <Register /> } />
-                        <Route path="/profil" element={ <Profil /> } />
+                        {authRoute}
                     </Routes>
                 <Footer />
             </div>
