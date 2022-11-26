@@ -14,8 +14,6 @@ Then install Node.js in you local system with command:
 
 ### Installation
 
-_Alta löydät ohjeet sovelluksen käyttöönottoon paikallisessa kehitysympäristössä. Kaikki tarvittava sovelluksen käynnistystä varten löytyy tästä dokumentista._
-
 1. Clone the repo
    ```sh
    git clone https://github.com/FelixWeiss98/WebDevTuDublinProjectReworked.git
